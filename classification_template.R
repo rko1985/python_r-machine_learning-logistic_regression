@@ -1,4 +1,4 @@
-# Logistic Regression
+# Classification Template
 
 # Importing the dataset
 dataset = read.csv('Social_Network_Ads.csv')
@@ -16,10 +16,8 @@ test_set = subset(dataset, split == FALSE)
 training_set[,1:2] = scale(training_set[,1:2])
 test_set[,1:2] = scale(test_set[,1:2])
 
-#Fitting Logistic Regression to the Training set
-classifier = glm(formula = Purchased ~ .,
-                 family = binomial,
-                 data = training_set)
+#Fitting Classifier to the Training set
+#Create your classifier here
 
 #Predicting the test set results
 prob_pred = predict(classifier, type = 'response', newdata = test_set[-3])
@@ -39,7 +37,7 @@ colnames(grid_set) = c('Age', 'EstimatedSalary')
 prob_set = predict(classifier, type = 'response', newdata = grid_set)
 y_grid = ifelse(prob_set > 0.5, 1, 0)
 plot(set[, -3],
-     main = 'Logistic Regression (Training set)',
+     main = 'Classifier (Training set)',
      xlab = 'Age', ylab = 'Estimated Salary',
      xlim = range(X1), ylim = range(X2))
 contour(X1, X2, matrix(as.numeric(y_grid), length(X1), length(X2)), add = TRUE)
@@ -56,7 +54,7 @@ colnames(grid_set) = c('Age', 'EstimatedSalary')
 prob_set = predict(classifier, type = 'response', newdata = grid_set)
 y_grid = ifelse(prob_set > 0.5, 1, 0)
 plot(set[, -3],
-     main = 'Logistic Regression (Test set)',
+     main = 'Classifier (Test set)',
      xlab = 'Age', ylab = 'Estimated Salary',
      xlim = range(X1), ylim = range(X2))
 contour(X1, X2, matrix(as.numeric(y_grid), length(X1), length(X2)), add = TRUE)
